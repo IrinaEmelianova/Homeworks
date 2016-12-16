@@ -1,15 +1,22 @@
 #include <iostream>
 
-using namespace std;
-
 struct StackElement
 {
 	int value;
 	StackElement *next;
 };
 
+// add new element in stack
 void push(StackElement *&head, char newValue);
+
+// remove element from stack
 void pop(StackElement *&head);
+
+// print all elements
 void print(StackElement *head);
+
+// checking whether stack is empty or not
 bool isEmpty(StackElement *head);
+
+// delete all elements
 void deleteStack(StackElement *&head);

@@ -6,7 +6,7 @@ using namespace std;
 
 bool isDigit(char symbol)
 {
-	if (int(symbol) >= 48 && int(symbol) <= 57)
+	if (int(symbol) >= '0' && int(symbol) <= '9')
 	{
 		return true;
 	}
