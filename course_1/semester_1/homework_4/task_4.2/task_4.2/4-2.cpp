@@ -78,7 +78,7 @@ int main()
 	int length = 0;
 
 	ifstream inputFile("input.txt");
-	if (inputFile == nullptr)
+	if (!inputFile.is_open())
 	{
 		cout << "opening file error" << endl;
 		return 0;
@@ -86,7 +86,7 @@ int main()
 
 	while (!inputFile.eof())
 	{
-		int number;
+		int number = 0;
 		inputFile >> number;
 		array[length] = number;
 		++length;

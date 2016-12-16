@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EE0205F6-669C-47D6-91EE-336A7F17736B}</ProjectGuid>
+    <ProjectGuid>{1EB767D5-02E9-468C-B75E-FCB381841298}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hometask42</RootNamespace>
+    <RootNamespace>task_42</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,11 +74,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\hometask4\42\42.cpp" />
-    <ClCompile Include="..\..\hometask4\42\qsort.cpp" />
+    <ClInclude Include="qsort.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\hometask4\42\qsort.h" />
+    <ClCompile Include="4-2.cpp" />
+    <ClCompile Include="qsort.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
