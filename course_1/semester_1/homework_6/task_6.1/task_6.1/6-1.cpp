@@ -30,9 +30,9 @@ int resultOfCalculation(string postfixExpression)
 	
 	for (int i = 0; i < postfixExpression.length(); i++)
 	{
-		if (int(postfixExpression[i]) >= 48 && int(postfixExpression[i]) <= 57)
+		if (int(postfixExpression[i]) >= '0' && int(postfixExpression[i]) <= '9')
 		{
-			push(head, int(postfixExpression[i]) - 48);
+			push(head, int(postfixExpression[i]) - '0');
 		}
 
 		if (postfixExpression[i] == '+' || postfixExpression[i] == '-' || postfixExpression[i] == '*' || postfixExpression[i] == '/')

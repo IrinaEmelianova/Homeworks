@@ -29,8 +29,11 @@ void print(StackElement *head)
 
 bool isEmpty(StackElement *head)
 {
-	if (head == nullptr) return true;
-	else return false;
+	if (head == nullptr)
+	{
+		return true;
+	}
+	return false;
 }
 
 void deleteStack(StackElement *&head)

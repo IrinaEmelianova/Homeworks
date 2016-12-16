@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3A983F97-D894-432B-B77D-652517963054}</ProjectGuid>
+    <ProjectGuid>{1A61A27C-2081-412C-A1BB-E58BC82075ED}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hometask6</RootNamespace>
+    <RootNamespace>task_61</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,7 +77,7 @@
     <ClInclude Include="stack.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="61.cpp" />
+    <ClCompile Include="6-1.cpp" />
     <ClCompile Include="stack.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
