@@ -26,30 +26,38 @@ int main()
 	{
 		cout << "¬ведите команду: ";
 		cin >> command;
-
-		if (command == 1)
+		
+		switch (command)
 		{
-			addRecord(phonebook, numberOfRecords);
-		}
+			case 1:
+			{
+				addRecord(phonebook, numberOfRecords);
+				break;
+			}
 
-		if (command == 2)
-		{
-			printAllRecords(phonebook, numberOfRecords);
-		}
+			case 2:
+			{
+				printAllRecords(phonebook, numberOfRecords);
+				break;
+			}
 	
-		if (command == 3)
-		{
-			searchPhone(phonebook, numberOfRecords);
-		}
+			case 3:
+			{
+				searchPhone(phonebook, numberOfRecords);
+				break;
+			}
 
-		if (command == 4)
-		{
-			searchName(phonebook, numberOfRecords);
-		}
+			case 4:
+			{
+				searchName(phonebook, numberOfRecords);
+				break;
+			}
 
-		if (command == 5)
-		{
-			saveInFile(phonebook, numberOfRecords);
+			case 5:
+			{
+				saveInFile(phonebook, numberOfRecords);
+				break;
+			}
 		}
 	}
 

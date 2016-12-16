@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D20D0B96-F5BE-4011-984A-605686B46670}</ProjectGuid>
+    <ProjectGuid>{8AC0FE8F-6544-4EE0-BAC2-EA3A5E26C11A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hometask_43</RootNamespace>
+    <RootNamespace>task_43</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,7 +74,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="43.cpp" />
+    <ClCompile Include="4-3.cpp" />
     <ClCompile Include="phonebook.cpp" />
   </ItemGroup>
   <ItemGroup>

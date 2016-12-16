@@ -35,24 +35,6 @@ void printAllRecords(Record phonebook[], int numberOfRecords)
 	cout << endl;
 }
 
-bool stringsAreEqual(string firstString, string secondString)
-{
-	if (firstString.length() != secondString.length())
-	{
-		return false;
-	}
-
-	for (int j = 0; j < firstString.length(); j++)
-	{
-		if (firstString[j] != secondString[j])
-		{
-			return false;
-		}
-	}
-
-	return true;
-}
-
 void searchPhone(Record phonebook[], int numberOfRecords)
 {
 	cout << "Введите имя для поиска: ";
@@ -61,7 +43,7 @@ void searchPhone(Record phonebook[], int numberOfRecords)
 
 	for (int j = 0; j < numberOfRecords; j++)
 	{
-		if (stringsAreEqual(name, phonebook[j].name))
+		if (name == phonebook[j].name)
 		{
 			cout << "Телефонный номер " << name << ": " << phonebook[j].phone << endl << endl;
 			break;
@@ -77,7 +59,7 @@ void searchName(Record phonebook[], int numberOfRecords)
 
 	for (int k = 0; k < numberOfRecords; k++)
 	{
-		if (stringsAreEqual(phone, phonebook[k].phone))
+		if (phone == phonebook[k].phone)
 		{
 			cout << "Владелец номера " << phone << ": " << phonebook[k].name << endl << endl;
 			break;
@@ -98,12 +80,12 @@ void saveInFile(Record phonebook[], int numberOfRecords)
 	phonebookFile.close();
 }
 
-void readFromFile(Record phonebook[], int &numberOfRecords, string name)
+void readFromFile(Record phonebook[], int &numberOfRecords, string fileName)
 {
-	ifstream phonebookFile(name);
+	ifstream phonebookFile(fileName);
 	if (!phonebookFile.is_open())
 	{
-		ofstream phonebookFile(name);
+		ofstream phonebookFile(fileName);
 	}
 
 	while (!phonebookFile.eof())
