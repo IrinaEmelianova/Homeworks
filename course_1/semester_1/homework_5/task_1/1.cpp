@@ -170,70 +170,78 @@ int main()
 		return 0;
 	}
 
-	int command = 1;
 	ListElement *head = nullptr;
 
+	int command = 1;
 	while (command != 0)
 	{
 		cout << "Введите команду: ";
 		cin >> command;
 
-		if (command == 0)
+		switch (command)
 		{
-			deleteList(head);
-			return 0;
-		}
-
-		if (command == 1)
-		{
-			cout << "Введите значение элемента: ";
-			int value = 0;
-			cin >> value;
-			
-			if (head == nullptr)
+			case 0:
 			{
-				addToHead(head, value);
+				deleteList(head);
+				return 0;
 			}
-			else 
+
+			case 1:
 			{
-				ListElement *a = additionPosition(head, value);
-				if (a == nullptr)
+				cout << "Введите значение элемента: ";
+				int value = 0;
+				cin >> value;
+			
+				if (head == nullptr)
 				{
 					addToHead(head, value);
 				}
+				else 
+				{
+					ListElement *a = additionPosition(head, value);
+					if (a == nullptr)
+					{
+						addToHead(head, value);
+					}
+					else
+					{
+						addElement(a, value);
+					}
+				}
+
+				break;
+			}
+
+			case 2:
+			{
+				cout << "Введите значение элемента: ";
+				int value = 0;
+				cin >> value;
+
+				ListElement *r = removingPosition(head, value);
+				if (r != nullptr && r -> next == nullptr)
+				{
+					cout << "Заданного элемента не существует в списке" << endl;
+				}
 				else
 				{
-					addElement(a, value);
+					if (r == nullptr)
+					{
+						removeFromHead(head);
+					}
+					else removeElement(r);
 				}
+
+				break;
 			}
-		}
 
-		if (command == 2)
-		{
-			cout << "Введите значение элемента: ";
-			int value = 0;
-			cin >> value;
-
-			ListElement *r = removingPosition(head, value);
-			if (r != nullptr && r -> next == nullptr)
+			case 3:
 			{
-				cout << "Заданного элемента не существует в списке" << endl;
+				printAll(head);
+				break;
 			}
-			else
-			{
-				if (r == nullptr)
-				{
-					removeFromHead(head);
-				}
-				else removeElement(r);
-			}
-		}
 
-		if (command == 3)
-		{
-			printAll(head);
+			cout << endl;
 		}
-
-		cout << endl;
 	}
 }
