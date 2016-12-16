@@ -77,11 +77,11 @@ int main()
 	
 	if (balanceIsRight(string))
 	{
-		cout << "Баланс в порядке";
+		cout << "Баланс в порядке" << endl;
 	}
 	else
 	{
-		cout << "Скобки не сбалансированы";
+		cout << "Скобки не сбалансированы" << endl;
 	}
 
 	return 0;
