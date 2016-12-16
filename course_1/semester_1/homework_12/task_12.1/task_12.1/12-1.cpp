@@ -28,7 +28,7 @@ void prefixFunction(string string, int m, int prefixFunctionsArray[])
 	}
 }
 
-int kmp(string text, string string)
+int searchingStringInText(string text, string string)
 {
 	int i = 0;
 	int j = 0;
@@ -77,7 +77,7 @@ bool tests()
 
 	fclose(fin);
 
-	return (kmp(text, "you") == 10 && kmp(text, "line") == 34 && kmp(text, "till") == 14 && kmp(text, "me") == -1);
+	return (searchingStringInText(text, "you") == 10 && searchingStringInText(text, "line") == 34 && searchingStringInText(text, "me") == -1);
 }
 
 int main()
@@ -110,13 +110,13 @@ int main()
 	string string;
 	getline(cin, string); 
 
-	if (kmp(text, string) == -1)
+	if (searchingStringInText(text, string) == -1)
 	{
 		cout << "¬хождений нет" << endl;
 	}
 	else
 	{
-		cout << kmp(text, string);
+		cout << searchingStringInText(text, string) << endl;
 	}
 
 	return 0;
