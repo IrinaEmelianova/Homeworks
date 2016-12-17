@@ -1,6 +1,7 @@
+#pragma once
 #include <string>
 
-using std::string;
+const std::string fileName;
 
 struct Record
 {
@@ -24,4 +25,4 @@ void searchName(Record phonebook[], int numberOfRecords);
 void saveInFile(Record phonebook[], int numberOfRecords);
 
 // read records from file
-void readFromFile(Record phonebook[], int &numberOfRecords, const string fileName);
+void readFromFile(Record phonebook[], int &numberOfRecords, const string &fileName);
