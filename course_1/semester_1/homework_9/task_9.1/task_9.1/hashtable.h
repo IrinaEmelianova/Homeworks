@@ -1,5 +1,7 @@
-#include <string>
+#pragma once
 #include "list.h"
+#include <string>
+
 
 using std::string;
 
