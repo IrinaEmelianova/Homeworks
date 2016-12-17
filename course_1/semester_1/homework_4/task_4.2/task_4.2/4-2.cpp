@@ -37,7 +37,7 @@ bool testQsort(int array[], int arrayLength)
 
 	for (int i = 0; i < arrayLength - 1; i++)
 	{
-		if (array[i] > array[i+1])
+		if (array[i] > array[i + 1])
 		{
 			return false;
 		}
@@ -91,6 +91,8 @@ int main()
 		array[length] = number;
 		++length;
 	}
+
+	inputFile.close();
 
 	qsort(array, 0, length - 1);
 
