@@ -1,12 +1,10 @@
 #pragma once
 #include <string>
 
-const std::string fileName;
-
 struct Record
 {
-	string name;
-	string phone;
+	std::string name;
+	std::string phone;
 };
 
 // add new record in the phonebook
@@ -25,4 +23,4 @@ void searchName(Record phonebook[], int numberOfRecords);
 void saveInFile(Record phonebook[], int numberOfRecords);
 
 // read records from file
-void readFromFile(Record phonebook[], int &numberOfRecords, const string &fileName);
+void readFromFile(Record phonebook[], int &numberOfRecords, const std::string &fileName);

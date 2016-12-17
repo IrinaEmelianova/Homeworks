@@ -1,7 +1,7 @@
+#include "phonebook.h"
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "phonebook.h"
 
 using namespace std;
 
@@ -80,7 +80,7 @@ void saveInFile(Record phonebook[], int numberOfRecords)
 	phonebookFile.close();
 }
 
-void readFromFile(Record phonebook[], int &numberOfRecords, string fileName)
+void readFromFile(Record phonebook[], int &numberOfRecords, const string &fileName)
 {
 	ifstream phonebookFile(fileName);
 	if (!phonebookFile.is_open())
