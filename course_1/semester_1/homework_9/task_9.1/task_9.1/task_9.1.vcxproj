@@ -10,19 +10,10 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="92.cpp" />
-    <ClCompile Include="hashTable.cpp" />
-    <ClCompile Include="list.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="hashTable.h" />
-    <ClInclude Include="list.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{622E9F34-6963-4B80-BBE7-E36A34F8989B}</ProjectGuid>
+    <ProjectGuid>{029515A6-CE49-4709-A40B-C5F26967F6D6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>homework9</RootNamespace>
+    <RootNamespace>task_91</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -82,6 +73,15 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="hashtable.h" />
+    <ClInclude Include="list.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="9-1.cpp" />
+    <ClCompile Include="hashtable.cpp" />
+    <ClCompile Include="list.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

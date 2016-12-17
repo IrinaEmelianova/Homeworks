@@ -51,10 +51,7 @@ int main()
 
 	fin.close();
 
-	for (int i = 0; i < sizeOfHashTable; i++)
-	{
-		printList(hashTable -> head[i]);
-	}
+	printHashTable(hashTable);
 
 	double x = loadFactor(hashTable);
 	cout << "Коэффициент заполнения хеш-таблицы: ";

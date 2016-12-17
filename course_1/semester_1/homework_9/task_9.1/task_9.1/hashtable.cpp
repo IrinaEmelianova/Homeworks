@@ -59,6 +59,14 @@ void addWord(HashTable *hashTable, string word)
 	}
 }
 
+void printHashTable(HashTable *hashTable)
+{
+	for (int i = 0; i < sizeOfHashTable; i++)
+	{
+		printList(hashTable -> head[i]);
+	}
+}
+
 double loadFactor(HashTable *hashTable)
 {
 	double numberOfElements = 0;
