@@ -11,8 +11,8 @@ struct ListElement
 void addToHead(ListElement *&head, int value)
 {
 	auto newElement = new ListElement;
-	newElement -> value = value;
-	newElement -> next = head;
+	newElement->value = value;
+	newElement->next = head;
 	head = newElement;
 }
 
@@ -21,10 +21,10 @@ ListElement *additionPosition(ListElement *head, int value)
 	ListElement *position = head;
 	ListElement *previousPosition = nullptr;
 
-	while (position != nullptr && value > position -> value)
+	while (position != nullptr && value > position->value)
 	{
 		previousPosition = position;
-		position = position -> next;
+		position = position->next;
 	}
 
 	return previousPosition;
@@ -33,15 +33,15 @@ ListElement *additionPosition(ListElement *head, int value)
 void addElement(ListElement *position, int value)
 {
 	auto newElement = new ListElement;
-	newElement -> value = value;
-	newElement -> next = position -> next;
-	position -> next = newElement;
+	newElement->value = value;
+	newElement->next = position->next;
+	position->next = newElement;
 }
 
 void removeFromHead(ListElement *&head)
 {
 	ListElement *oldHead = head;
-	head = head -> next;
+	head = head->next;
 	delete oldHead;
 }
 
@@ -50,10 +50,10 @@ ListElement *removingPosition(ListElement *head, int value)
 	ListElement *position = head;
 	ListElement *previousPosition = nullptr;
 
-	while (position != nullptr && position -> value != value)
+	while (position != nullptr && position->value != value)
 	{
 		previousPosition = position;
-		position = position -> next;
+		position = position->next;
 	}
 	
 	return previousPosition;
@@ -61,8 +61,8 @@ ListElement *removingPosition(ListElement *head, int value)
 
 void removeElement(ListElement *removingPosition)
 {
-	auto oldElement = removingPosition -> next;
-	removingPosition -> next = removingPosition -> next -> next;
+	auto oldElement = removingPosition->next;
+	removingPosition->next = removingPosition->next->next;
 	delete oldElement;
 }
 
@@ -70,8 +70,8 @@ void printAll(ListElement *head)
 {
 	while (head != nullptr)
 	{
-		cout << head -> value << " ";
-		head = head -> next;
+		cout << head->value << " ";
+		head = head->next;
 	}
 
 	cout << endl;
@@ -93,7 +93,7 @@ bool additionToHeadTest()
 	addToHead(head1, 1);
 	addToHead(head2, 2);
 
-	return (head1 -> value == 1 && head2 -> value == 2); 
+	return (head1->value == 1 && head2->value == 2); 
 }
 
 bool removingFromHeadTest()
@@ -106,7 +106,7 @@ bool removingFromHeadTest()
 
 	removeFromHead(head1);
 
-	return (head1 -> value == 2 && head1 -> next -> value == 1); 
+	return (head1->value == 2 && head1->next->value == 1); 
 }
 
 bool additionPositionTest()
@@ -117,7 +117,7 @@ bool additionPositionTest()
 	addToHead(head1, 2);
 	addToHead(head1, 1);
 
-	return (additionPosition(head1, 0) == nullptr && additionPosition(head1, 3) == head1 -> next);
+	return (additionPosition(head1, 0) == nullptr && additionPosition(head1, 3) == head1->next);
 }
 
 bool removingPositionTest()
@@ -139,7 +139,7 @@ bool additionTest()
 	addElement(additionPosition(head1, 3), 3);
 	addElement(additionPosition(head1, 2), 2);
 
-	return (head1 -> value == 1 && head1 -> next -> value == 2 && head1 -> next -> next -> value == 3); 
+	return (head1->value == 1 && head1->next->value == 2 && head1->next->next->value == 3); 
 }
 
 bool removingTest()
@@ -152,7 +152,7 @@ bool removingTest()
 
 	removeElement(removingPosition(head1, 2));
 
-	return (head1 -> value == 3 && head1 -> next -> value == 1); 
+	return (head1->value == 3 && head1->next->value == 1); 
 }
 
 bool tests()
@@ -219,7 +219,7 @@ int main()
 				cin >> value;
 
 				ListElement *r = removingPosition(head, value);
-				if (r != nullptr && r -> next == nullptr)
+				if (r != nullptr && r->next == nullptr)
 				{
 					cout << "Заданного элемента не существует в списке" << endl;
 				}
@@ -229,7 +229,10 @@ int main()
 					{
 						removeFromHead(head);
 					}
-					else removeElement(r);
+					else
+					{
+						removeElement(r);
+					}
 				}
 
 				break;
@@ -241,7 +244,12 @@ int main()
 				break;
 			}
 
-			cout << endl;
+			default:
+			{
+				cout << "Некорректно введена команда" << endl;
+			}
 		}
+			
+		cout << endl;
 	}
 }
