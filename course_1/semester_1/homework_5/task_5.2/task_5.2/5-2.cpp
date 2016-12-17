@@ -11,20 +11,20 @@ struct CircularListElement
 void addElement(CircularListElement *&position, int value)
 {
 	auto newElement = new CircularListElement;
-	newElement -> value = value;
-	newElement -> next = position -> next;
-	position -> next = newElement;
-	position = position -> next;
+	newElement->value = value;
+	newElement->next = position->next;
+	position->next = newElement;
+	position = position->next;
 }
 
-void createList(CircularListElement *&head, int n)
+void createList(CircularListElement *&head, int numberOfElements)
 {
 	head = new CircularListElement;
-	head -> value = 1;
-	head -> next = head;
+	head->value = 1;
+	head->next = head;
 	CircularListElement *position = head;
 
-	for (int i = 2; i <= n; i++)
+	for (int i = 2; i <= numberOfElements; i++)
 	{
 		addElement(position, i);
 	}
@@ -32,30 +32,39 @@ void createList(CircularListElement *&head, int n)
 
 void removeElement(CircularListElement *&head, CircularListElement *&removingPosition)
 {
-	auto oldElement = removingPosition -> next;
-	removingPosition -> next = removingPosition -> next -> next;
+	auto oldElement = removingPosition->next;
+	removingPosition->next = removingPosition->next->next;
 	if (oldElement == head)
 	{
-		head = removingPosition -> next;
+		head = removingPosition->next;
 	}
 	delete oldElement;
+}
+
+void deleteList(CircularListElement *&head)
+{
+	while (head->next != head)
+	{
+		removeElement(head, head);
+	}
+	delete head;
 }
 
 int result(CircularListElement *&head, int m)
 {
 	CircularListElement *removingPosition = head;
 
-	while (head -> next != head)
+	while (head->next != head)
 	{
 		for (int i = 0; i < m - 2; i++)
 		{
-			removingPosition = removingPosition -> next;
+			removingPosition = removingPosition->next;
 		}
 		removeElement(head, removingPosition);
-		removingPosition = removingPosition -> next;
+		removingPosition = removingPosition->next;
 	}
 
-	return head -> value;
+	return head->value;
 }
 
 bool tests()
@@ -70,8 +79,6 @@ bool tests()
 	createList(head3, 3);
 
 	return (result(head1, 2) == 3 && result(head2, 3) == 4 && result(head3, 3) == 2);
-
-
 }
 
 int main()
@@ -97,6 +104,8 @@ int main()
 	createList(head, n);
 
 	cout << "Выигрышная позиция: " << result(head, m) << endl;
+
+	deleteList(head);
 	
 	return 0;
 }
