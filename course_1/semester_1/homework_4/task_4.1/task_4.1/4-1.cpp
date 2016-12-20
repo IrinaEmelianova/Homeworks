@@ -10,7 +10,7 @@ void binaryNumber(int number, bool binaryArray[])
 	{
 		if (number & 1)
 		{
-			binaryArray[i] = 1;
+			binaryArray[i] = true;
 		}
 
 		number = number >> 1;
@@ -20,37 +20,37 @@ void binaryNumber(int number, bool binaryArray[])
 void binarySum(bool binaryNumber1[], bool binaryNumber2[], bool binSum[])
 {
 	int sum = 0;
-	bool remainder = 0;
+	bool remainder = false;
 	for (int i = 0; i < length; i++)
 	{
 		sum = binaryNumber1[i] + binaryNumber2[i] + remainder;
 		if (sum == 0)
 		{
-			remainder = 0;
+			remainder = false;
 		}
 		if (sum == 1)
 		{
-			binSum[i] = 1;
-			remainder = 0;
+			binSum[i] = true;
+			remainder = false;
 		}
 		if (sum == 2)
 		{
-			remainder = 1;
+			remainder = true;
 		}
 		if (sum == 3)
 		{
-			binSum[i] = 1;
-			remainder = 1;
+			binSum[i] = true;
+			remainder = true;
 		}
 	}
 }
 
-int decimalPositiveSum(bool binSum[])
+int decimalSum(bool binSum[])
 {
 	int decimalSum = 0;
 	int power = 1;
 
-	for (int i = 0; i < length - 1; i++)
+	for (int i = 0; i < length; i++)
 	{
 		if (binSum[i])
 		{
@@ -58,45 +58,7 @@ int decimalPositiveSum(bool binSum[])
 		}
 		power = power * 2;
 	}
-
-	return decimalSum;
-}
-
-int decimalSum(bool binSum[])
-{
-	int decimalSum = 0;
-
-	if (!binSum[length - 1])
-	{
-		decimalSum = decimalPositiveSum(binSum);
-	}
-	else
-	{
-		for (int i = 0; i < length; i++)
-		{
-			binSum[i] = !binSum[i];
-		}
-
-		bool exit = false;
-		int i = 0;
-
-		while(!exit)
-		{
-			if (!binSum[i])
-			{
-				binSum[i] = 1;
-				exit = true;
-			}
-			else
-			{
-				binSum[i] = 0;
-				++i;
-			}
-		}
-
-		decimalSum = - decimalPositiveSum(binSum);
-	}
-
+	
 	return decimalSum;
 }
 
