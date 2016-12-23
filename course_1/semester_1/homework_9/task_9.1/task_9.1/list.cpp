@@ -1,22 +1,29 @@
+#include "list.h"
 #include <iostream>
 #include <string>
-#include "list.h"
 
 using namespace std;
 
-void addToHead(ListElement *&head, string value)
+struct ListElement
+{
+	string value;
+	int numberOfRepetitions;
+	ListElement *next;
+};
+
+void addToHead(ListElement *&head, const string &value)
 {
 	auto newListElement = new ListElement;
-	newListElement -> value = value;
-	newListElement -> numberOfRepetitions = 1;
-	newListElement -> next = head;
+	newListElement->value = value;
+	newListElement->numberOfRepetitions = 1;
+	newListElement->next = head;
 	head = newListElement;
 }
 
 void deleteFromHead(ListElement *&head)
 {
 	ListElement *oldHead = head;
-	head = head -> next;
+	head = head->next;
 	delete oldHead;
 }
 
@@ -32,16 +39,16 @@ void printList(ListElement *head)
 {
 	while (head != nullptr)
 	{
-		cout << head -> value << " " << head -> numberOfRepetitions << endl;
-		head = head -> next;
+		cout << head->value << " " << head->numberOfRepetitions << endl;
+		head = head->next;
 	}
 }
 
-ListElement *searchListElement(ListElement *head, string value)
+ListElement *searchListElement(ListElement *head, const string &value)
 {
-	while (head != nullptr && head -> value != value)
+	while (head != nullptr && head->value != value)
 	{
-		head = head -> next;
+		head = head->next;
 	}
 
 	return head;
@@ -54,8 +61,13 @@ int numberOfListElements(ListElement *head)
 	while (head != nullptr)
 	{
 		++numberOfListElements;
-		head = head -> next;
+		head = head->next;
 	}
 
 	return numberOfListElements;
+}
+
+void increaseElementsNumberOfRepetitions(ListElement *element)
+{
+	++element->numberOfRepetitions;
 }

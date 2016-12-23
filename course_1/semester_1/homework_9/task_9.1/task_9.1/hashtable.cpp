@@ -1,14 +1,20 @@
-#include <string>
 #include "hashtable.h"
+#include "list.h"
+#include <string>
 
 using namespace std;
+
+struct HashTable
+{
+	ListElement *head[sizeOfHashTable];
+};
 
 HashTable *createHashTable()
 {
 	auto hashTable = new HashTable;
 	for (int i = 0; i < sizeOfHashTable; i++)
 	{
-		hashTable -> head[i] = nullptr;
+		hashTable->head[i] = nullptr;
 	}
 
 	return hashTable;
@@ -18,7 +24,7 @@ void deleteHashTable(HashTable *hashTable)
 {
 	for (int i = 0; i < sizeOfHashTable; i++)
 	{
-		deleteList(hashTable -> head[i]);
+		deleteList(hashTable->head[i]);
 	}
 
 	delete hashTable;
@@ -34,24 +40,24 @@ int createHash(const string &key)
 void addElement(HashTable *hashTable, const string &value)
 {
 	int hash = createHash(value);
-	addToHead(hashTable -> head[hash], value);
+	addToHead(hashTable->head[hash], value);
 }
 
 ListElement *searchElement(HashTable *hashTable, const string &value)
 {
 	int hash = createHash(value);
 
-	ListElement *searchedElement = searchListElement(hashTable -> head[hash], value);
+	ListElement *searchedElement = searchListElement(hashTable->head[hash], value);
 
 	return searchedElement;
 }
 
-void addWord(HashTable *hashTable, string word)
+void addWord(HashTable *hashTable, const string &word)
 {
 	if (searchElement(hashTable, word) != nullptr)
 	{
 		auto searchedElement = searchElement(hashTable, word);
-		++searchedElement -> numberOfRepetitions;
+		increaseElementsNumberOfRepetitions(searchedElement);
 	}
 	else
 	{
@@ -63,7 +69,7 @@ void printHashTable(HashTable *hashTable)
 {
 	for (int i = 0; i < sizeOfHashTable; i++)
 	{
-		printList(hashTable -> head[i]);
+		printList(hashTable->head[i]);
 	}
 }
 
@@ -72,10 +78,10 @@ double loadFactor(HashTable *hashTable)
 	double numberOfElements = 0;
 	for (int i = 0; i < sizeOfHashTable; i++)
 	{
-		numberOfElements = numberOfElements + numberOfListElements(hashTable -> head[i]);
+		numberOfElements += numberOfListElements(hashTable->head[i]);
 	}
 
-	double loadFactor = numberOfElements/sizeOfHashTable;
+	double loadFactor = numberOfElements / sizeOfHashTable;
 	return loadFactor;
 }
 
@@ -86,16 +92,15 @@ int mediumLength(HashTable *hashTable)
 
 	for (int i = 0; i < sizeOfHashTable; i++)
 	{
-		if (hashTable -> head[i] != nullptr)
+		if (hashTable->head[i] != nullptr)
 		{
 			++numberOfFilledBuckets;
 		}
 
-		numberOfElements = numberOfElements + numberOfListElements(hashTable -> head[i]);
+		numberOfElements += numberOfListElements(hashTable->head[i]);
 	}
 
-	int mediumLength = numberOfElements/numberOfFilledBuckets;
-
+	int mediumLength = numberOfElements / numberOfFilledBuckets;
 	return mediumLength;
 }
 
@@ -105,9 +110,9 @@ int maxLength(HashTable *hashTable)
 
 	for (int i = 0; i < sizeOfHashTable; i++)
 	{
-		if (numberOfListElements(hashTable -> head[i]) > maxLength)
+		if (numberOfListElements(hashTable->head[i]) > maxLength)
 		{
-			maxLength = numberOfListElements(hashTable -> head[i]);
+			maxLength = numberOfListElements(hashTable->head[i]);
 		}
 	}
 

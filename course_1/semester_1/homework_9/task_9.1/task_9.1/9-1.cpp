@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-#include "hashtable.h"
 #include <fstream>
 #include <stdio.h>
+#include "hashtable.h"
 
 using namespace std;
 
@@ -20,7 +20,7 @@ bool tests()
 
 	fin.close();
 
-	return (hashTable -> head[9] -> value == "down" && hashTable -> head[0] -> value == "you" && loadFactor(hashTable) == 0.7 && maxLength(hashTable) == 2 && mediumLength(hashTable) == 1);
+	return (loadFactor(hashTable) == 0.7 && maxLength(hashTable) == 2 && mediumLength(hashTable) == 1);
 }
 
 int main()
@@ -60,6 +60,8 @@ int main()
 
 	cout << "Максимальная длина списка в сегменте таблицы: " << maxLength(hashTable) << endl;
 	cout << "Средняя длина списка: " << mediumLength(hashTable) << endl;
+
+	deleteHashTable(hashTable);
 	
 	return 0;
 }

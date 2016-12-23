@@ -1,16 +1,9 @@
 #pragma once
-#include "list.h"
 #include <string>
-
-
-using std::string;
 
 const int sizeOfHashTable = 10;
 
-struct HashTable
-{
-	ListElement *head[sizeOfHashTable];
-};
+struct HashTable;
 
 // create new hash table
 HashTable *createHashTable();
@@ -18,11 +11,8 @@ HashTable *createHashTable();
 // delete hash table
 void deleteHashTable(HashTable *hashTable);
 
-// create hash to the element key
-int createHash(const string &key);
-
 // add a word to hash table
-void addWord(HashTable *hashTable, string word);
+void addWord(HashTable *hashTable, const std::string &word);
 
 // print all elements 
 void printHashTable(HashTable *hashTable);
