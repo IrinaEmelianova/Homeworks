@@ -32,7 +32,7 @@ bool balanceIsRight(string string)
 		}
 		if (string[i] == ')' || string[i] == ']' || string[i] == '}')
 		{
-			if (head != nullptr && head -> value == reversedSymbol(string[i]))
+			if (head != nullptr && headValue(head) == reversedSymbol(string[i]))
 			{
 				pop(head);
 			}
@@ -44,7 +44,7 @@ bool balanceIsRight(string string)
 		}
 	}
 
-	return (head == nullptr);
+	return head == nullptr;
 }
 
 bool tests()
@@ -53,12 +53,7 @@ bool tests()
 	string str2 = "aaaa[bbb(cc]nn)";
 	string str3 = "aaa]bb[ccc";
 
-	if (balanceIsRight(str1) == true && balanceIsRight(str2) == false && balanceIsRight(str3) == false)
-	{
-		return true;
-	}
-
-	return false;
+	return (balanceIsRight(str1) && !balanceIsRight(str2) && !balanceIsRight(str3));
 }
 
 int main()
