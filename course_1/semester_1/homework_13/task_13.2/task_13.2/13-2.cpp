@@ -6,17 +6,17 @@ using namespace std;
 void readStateTableFromFile(int stateTable[3][4])
 {
 	FILE *table = fopen("table.txt", "r");
-	char a = 0;
+	char readingSymbol = 0;
 
 	int i = 0;
 	int j = 0;
 	while (i < 3 && j < 4)
 	{
-		a = fgetc(table);
+		readingSymbol = fgetc(table);
 
-		if (a >= '0' && a <= '9')
+		if (readingSymbol >= '0' && readingSymbol <= '9')
 		{
-			stateTable[i][j] = a - '0';
+			stateTable[i][j] = readingSymbol - '0';
 			++j;
 			if (j == 4)
 			{
@@ -64,7 +64,7 @@ void searchComments(FILE *textFile, int stateTable[3][4], string &comments)
 			{
 				if (symbol == '/')
 				{
-					comments = comments + symbol;
+					comments += symbol;
 				}
 				break;
 			}
@@ -78,11 +78,11 @@ void searchComments(FILE *textFile, int stateTable[3][4], string &comments)
 			{
 				if (symbol == '*')
 				{
-					comments = comments + "/*";
+					comments += "/*";
 				}
 				else
 				{
-					comments = comments + symbol;
+					comments += symbol;
 				}
 
 				break;
@@ -90,7 +90,7 @@ void searchComments(FILE *textFile, int stateTable[3][4], string &comments)
 
 			case 3:
 			{
-				comments = comments + symbol;
+				comments += symbol;
 				break;
 			}
 		}
@@ -109,7 +109,7 @@ bool tests()
 
 	fclose(testFile);
 
-	return (comments == "/*we could*//*time***/");
+	return comments == "/*we could*//*time***/";
 }
 
 int main()
