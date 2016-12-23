@@ -4,23 +4,23 @@
 
 using namespace std;
 
-int resultOfOperation(StackElement *head, char operation)
+int resultOfOperation(int first, int second, char operation)
 {
 	if (operation == '+')
 	{
-		return (head -> value + head -> next -> value);
+		return (first + second);
 	}
 	if (operation == '-')
 	{
-		return (head -> next -> value - head -> value);
+		return (second - first);
 	}
 	if (operation == '*')
 	{
-		return (head -> value * head -> next -> value);
+		return (first * second);
 	}
 	if (operation == '/')
 	{
-		return (head -> next -> value / head -> value);
+		return (second / first);
 	}
 }
 
@@ -37,14 +37,17 @@ int resultOfCalculation(string postfixExpression)
 
 		if (postfixExpression[i] == '+' || postfixExpression[i] == '-' || postfixExpression[i] == '*' || postfixExpression[i] == '/')
 		{
-			int result = resultOfOperation(head, postfixExpression[i]);
+			int  first = headValue(head);
 			pop(head);
+			int second = headValue(head);
 			pop(head);
+
+			int result = resultOfOperation(first, second, postfixExpression[i]);
 			push(head, result);
 		}
 	}
 
-	return head -> value;
+	return headValue(head);
 }
 
 bool tests()
