@@ -25,7 +25,7 @@ void readFromFile(string &expression)
 	while (!feof(fin))
 	{
 		symbol = fgetc(fin);
-		expression = expression + symbol;
+		expression += symbol;
 	}
 
 	fclose(fin);
@@ -53,20 +53,12 @@ void addOperatorToRoot(TreeElement *&root, char operation)
 
 bool isOperator(char symbol)
 {
-	if (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/')
-	{
-		return true;
-	}
-	return false;
+	return symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/';
 }
 
 bool isDigit(char symbol)
 {
-	if (int(symbol) >= '0' && int(symbol) <= '9')
-	{
-		return true;
-	}
-	return false;
+	return symbol >= '0' && symbol <= '9';
 }
 
 void buildTree(TreeElement *&root, const string &expression, int &counter)
@@ -109,7 +101,7 @@ void buildTree(TreeElement *&root, const string &expression, int &counter)
 		int number = 0;
 		while (counter < expression.length() && isDigit(expression[counter]))
 		{
-			number = number * 10 + int(expression[counter]) - '0';
+			number = number * 10 + expression[counter] - '0';
 			++counter;
 		}
 		--counter;

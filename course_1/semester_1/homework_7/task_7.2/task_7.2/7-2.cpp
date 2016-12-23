@@ -17,7 +17,7 @@ bool tests()
 	buildTree(root1, str1, i);
 	buildTree(root2, str2, j);
 
-	bool returning = (countResult(root1) == 4 && countResult(root2) == 5);
+	bool returning = countResult(root1) == 4 && countResult(root2) == 5;
 
 	deleteTree(root1);
 	deleteTree(root2);
