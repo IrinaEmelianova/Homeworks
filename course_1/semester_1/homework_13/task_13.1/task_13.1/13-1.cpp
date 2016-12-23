@@ -21,7 +21,7 @@ bool isRealNumber(const string &string)
 		{
 			case 0:
 			{
-				if (int(symbol) >= '0' && int(symbol) <= '9')
+				if (symbol >= '0' && symbol <= '9')
 				{
 					state = 0;
 				}
@@ -42,7 +42,7 @@ bool isRealNumber(const string &string)
 
 			case 1:
 			{
-				if (int(symbol) >= '0' && int(symbol) <= '9')
+				if (symbol >= '0' && symbol <= '9')
 				{
 					state = 2;
 				}
@@ -56,7 +56,7 @@ bool isRealNumber(const string &string)
 
 			case 2:
 			{
-				if (int(symbol) >= '0' && int(symbol) <= '9')
+				if (symbol >= '0' && symbol <= '9')
 				{
 					state = 2;
 				}
@@ -83,7 +83,7 @@ bool isRealNumber(const string &string)
 				}
 				else
 				{
-					if (int(symbol) >= '0' && int(symbol) <= '9')
+					if (symbol >= '0' && symbol <= '9')
 					{
 						state = 4;
 					}
@@ -98,7 +98,7 @@ bool isRealNumber(const string &string)
 
 			case 4:
 			{
-				if (int(symbol) >= '0' && int(symbol) <= '9')
+				if (symbol >= '0' && symbol <= '9')
 				{
 					state = 4;
 				}
@@ -124,7 +124,7 @@ bool tests()
 	string s5 = "123.45E+";
 	string s6 = "123.45E-09";
 
-	return (isRealNumber(s1) && !isRealNumber(s2) && !isRealNumber(s3) && !isRealNumber(s4) && !isRealNumber(s5) && isRealNumber(s6));
+	return isRealNumber(s1) && !isRealNumber(s2) && !isRealNumber(s3) && !isRealNumber(s4) && !isRealNumber(s5) && isRealNumber(s6);
 }
 
 int main()
@@ -139,7 +139,7 @@ int main()
 
 	cout << "¬ведите выражение дл€ анализа: ";
 	string string;
-	getline(cin,string);
+	getline(cin, string);
 	
 	if (isRealNumber(string))
 	{
