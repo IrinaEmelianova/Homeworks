@@ -1,10 +1,6 @@
 #pragma once
 
-struct StackElement
-{
-	int value;
-	StackElement *next;
-};
+struct StackElement;
 
 // add new element in stack
 void push(StackElement *&head, char newValue);
@@ -20,3 +16,6 @@ bool isEmpty(StackElement *head);
 
 // delete all elements
 void deleteStack(StackElement *&head);
+
+// get value of the stack head
+char headValue(StackElement *head);

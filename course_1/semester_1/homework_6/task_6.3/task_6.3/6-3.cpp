@@ -6,29 +6,17 @@ using namespace std;
 
 bool isDigit(char symbol)
 {
-	if (int(symbol) >= '0' && int(symbol) <= '9')
-	{
-		return true;
-	}
-	return false;
+	return (int(symbol) >= '0' && int(symbol) <= '9');
 }
 
 bool isOperator(char symbol)
 {
-	if (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/')
-	{
-		return true;
-	}
-	return false;
+	return (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/');
 }
 
 bool biggerPriority(char operator1, char operator2)
 {
-	if ((operator1 == '*' || operator1 == '/') && (operator2 == '+' || operator2 == '-'))
-	{
-		return true;
-	}
-	return false;
+	return ((operator1 == '*' || operator1 == '/') && (operator2 == '+' || operator2 == '-'));
 }
 
 string postfixForm(string infixForm)
@@ -50,9 +38,9 @@ string postfixForm(string infixForm)
 
 		if (infixForm[i] == ')')
 		{
-			while (head -> value != '(')
+			while (headValue(head) != '(')
 			{
-				char a = head -> value;
+				char a = headValue(head);
 				postfixForm = postfixForm + a + ' ';
 				pop(head);
 			}
@@ -62,11 +50,11 @@ string postfixForm(string infixForm)
 
 		if (isOperator(infixForm[i]))
 		{
-			while (head != nullptr && isOperator(head -> value))
+			while (head != nullptr && isOperator(headValue(head)))
 			{
-				if (!biggerPriority(infixForm[i], head -> value))
+				if (!biggerPriority(infixForm[i], headValue(head)))
 				{
-					char a = head -> value;
+					char a = headValue(head);
 					postfixForm = postfixForm + a + ' ';
 					pop(head);
 				}
@@ -82,7 +70,7 @@ string postfixForm(string infixForm)
 
 	while (!isEmpty(head))
 	{
-		char a = head -> value;
+		char a = headValue(head);
 		postfixForm = postfixForm + a + ' ';
 		pop(head);
 	}
@@ -96,11 +84,7 @@ bool tests()
 	string str2 = "2 - 7 * 5";
 	string str3 = "1 * (7 - 4) + 3";
 
-	if (postfixForm(str1) == "1 1 + 2 * " && postfixForm(str2) == "2 7 5 * - " && postfixForm(str3) == "1 7 4 - * 3 + ")
-	{
-		return true;
-	}
-	return false;
+	return (postfixForm(str1) == "1 1 + 2 * " && postfixForm(str2) == "2 7 5 * - " && postfixForm(str3) == "1 7 4 - * 3 + ");
 }
 
 int main()
