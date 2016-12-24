@@ -10,11 +10,11 @@ void divide(Record *&phonebook, Record *&leftHalf, Record *&rightHalf)
 
 	for (int i = 0; i < length - 1; i++)
 	{
-		position = position->next;
+		position = recordsNext(position);
 	}
 
-	rightHalf = position->next;
-	position->next = nullptr;
+	rightHalf = recordsNext(position);
+	recordsNext(position) = nullptr;
 
 	leftHalf = phonebook;
 	phonebook = nullptr;
@@ -24,27 +24,27 @@ void merge(Record *&phonebook1, Record *&phonebook2, Record *&phonebook, bool co
 {
 	while (phonebook1 != nullptr && phonebook2 != nullptr)
 	{
-		if (!command && (phonebook1->name < phonebook2->name) || command && (phonebook1->phone < phonebook2->phone))
+		if (!command && (recordsName(phonebook1) < recordsName(phonebook2)) || command && (recordsPhone(phonebook1) < recordsPhone(phonebook2)))
 		{
-			addInEnd(phonebook, phonebook1->phone, phonebook1->name);
+			addInEnd(phonebook, recordsPhone(phonebook1), recordsName(phonebook1));
 			deleteRecord(phonebook1);
 		}
 		else
 		{
-			addInEnd(phonebook, phonebook2->phone, phonebook2->name);
+			addInEnd(phonebook, recordsPhone(phonebook2), recordsName(phonebook2));
 			deleteRecord(phonebook2);
 		}
 	}
 
 	while (phonebook1 == nullptr && phonebook2 != nullptr)
 	{
-		addInEnd(phonebook, phonebook2->phone, phonebook2->name);
+		addInEnd(phonebook, recordsPhone(phonebook2), recordsName(phonebook2));
 		deleteRecord(phonebook2);
 	}
 
 	while (phonebook1 != nullptr && phonebook2 == nullptr)
 	{
-		addInEnd(phonebook, phonebook1->phone, phonebook1->name);
+		addInEnd(phonebook, recordsPhone(phonebook1), recordsName(phonebook1));
 		deleteRecord(phonebook1);
 	}
 }

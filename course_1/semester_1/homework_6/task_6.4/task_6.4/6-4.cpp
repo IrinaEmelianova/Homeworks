@@ -9,14 +9,14 @@ bool test1()
 	readFromFile(phonebook1, "test.txt");
 	mergeSort(phonebook1, false);
 
-	while (phonebook1->next != nullptr)
+	while (recordsNext(phonebook1) != nullptr)
 	{
-		if (phonebook1->name > phonebook1->next->name)
+		if (recordsName(phonebook1) > recordsName(recordsNext(phonebook1)))
 		{
 			deletePhonebook(phonebook1);
 			return false;
 		}
-		phonebook1 = phonebook1->next;
+		phonebook1 = recordsNext(phonebook1);
 	}
 
 	deletePhonebook(phonebook1);
@@ -29,14 +29,14 @@ bool test2()
 	readFromFile(phonebook2, "test.txt");
 	mergeSort(phonebook2, true);
 
-	while (phonebook2->next != nullptr)
+	while (recordsNext(phonebook2) != nullptr)
 	{
-		if (phonebook2->phone > phonebook2->next->phone)
+		if (recordsPhone(phonebook2) > recordsPhone(recordsNext(phonebook2)))
 		{
 			deletePhonebook(phonebook2);
 			return false;
 		}
-		phonebook2 = phonebook2->next;
+		phonebook2 = recordsNext(phonebook2);
 	}
 
 	deletePhonebook(phonebook2);

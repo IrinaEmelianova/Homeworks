@@ -5,6 +5,13 @@
 
 using namespace std;
 
+struct Record
+{
+	string name;
+	string phone;
+	Record *next;
+};
+
 void readFromFile(Record *&phonebook, const string &fileName)
 {
 	ifstream phonebookFile(fileName);
@@ -90,5 +97,29 @@ void print(Record *phonebook)
 	{
 		cout << phonebook->name << " " << phonebook->phone << endl;
 		phonebook = phonebook->next;
+	}
+}
+
+string recordsName(Record *record)
+{
+	if (record != nullptr)
+	{
+		return record->name;
+	}
+}
+
+string recordsPhone(Record *record)
+{
+	if (record != nullptr)
+	{
+		return record->phone;
+	}
+}
+
+Record *&recordsNext(Record *record)
+{
+	if (record != nullptr)
+	{
+		return record->next;
 	}
 }

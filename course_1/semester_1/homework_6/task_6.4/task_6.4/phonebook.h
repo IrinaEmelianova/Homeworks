@@ -1,12 +1,7 @@
 #pragma once
 #include <string>
 
-struct Record
-{
-	std::string name;
-	std::string phone;
-	Record *next;
-};
+struct Record;
 
 // read phonebook from file
 void readFromFile(Record *&phonebook, const std::string &fileName);
@@ -25,3 +20,12 @@ void deletePhonebook(Record *&phonebook);
 
 // print all records
 void print(Record *phonebook);
+
+// return name from record
+std::string recordsName(Record *record);
+
+// return phone from record
+std::string recordsPhone(Record *record);
+
+// return next record
+Record *&recordsNext(Record *record);
