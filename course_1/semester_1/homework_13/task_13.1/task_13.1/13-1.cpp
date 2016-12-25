@@ -23,28 +23,7 @@ bool isRealNumber(const string &string)
 			{
 				if (symbol >= '0' && symbol <= '9')
 				{
-					state = 0;
-				}
-				else
-				{
-					if (symbol == '.' && i != string.length() - 1)
-					{
-						state = 1;
-					}
-					else
-					{
-						return false;
-					}
-				}
-
-				break;
-			}
-
-			case 1:
-			{
-				if (symbol >= '0' && symbol <= '9')
-				{
-					state = 2;
+					state = 1;
 				}
 				else
 				{
@@ -54,17 +33,17 @@ bool isRealNumber(const string &string)
 				break;
 			}
 
-			case 2:
+			case 1:
 			{
 				if (symbol >= '0' && symbol <= '9')
 				{
-					state = 2;
+					state = 1;
 				}
 				else
 				{
-					if (symbol == 'E' && i != string.length() - 1)
+					if (symbol == '.')
 					{
-						state = 3;
+						state = 2;
 					}
 					else
 					{
@@ -75,15 +54,29 @@ bool isRealNumber(const string &string)
 				break;
 			}
 
-			case 3:
+			case 2:
 			{
-				if ((symbol == '+' || symbol == '-') && i != string.length() - 1)
+				if (symbol >= '0' && symbol <= '9')
 				{
-					state = 4;
+					state = 3;
 				}
 				else
 				{
-					if (symbol >= '0' && symbol <= '9')
+					return false;
+				}
+
+				break;
+			}
+
+			case 3:
+			{
+				if (symbol >= '0' && symbol <= '9')
+				{
+					state = 3;
+				}
+				else
+				{
+					if (symbol == 'E')
 					{
 						state = 4;
 					}
@@ -98,9 +91,44 @@ bool isRealNumber(const string &string)
 
 			case 4:
 			{
+				if (symbol == '+' || symbol == '-')
+				{
+					state = 5;
+				}
+				else
+				{
+					if (symbol >= '0' && symbol <= '9')
+					{
+						state = 6;
+					}
+					else
+					{
+						return false;
+					}
+				}
+
+				break;
+			}
+
+			case 5:
+			{
 				if (symbol >= '0' && symbol <= '9')
 				{
-					state = 4;
+					state = 6;
+				}
+				else
+				{
+					return false;
+				}
+
+				break;
+			}
+
+			case 6:
+			{
+				if (symbol >= '0' && symbol <= '9')
+				{
+					state = 6;
 				}
 				else
 				{
@@ -112,7 +140,7 @@ bool isRealNumber(const string &string)
 		}
 	}
 
-	return true;
+	return state != 2 && state != 4 && state != 5;
 }
 
 bool tests()
