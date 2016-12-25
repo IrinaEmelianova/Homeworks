@@ -75,10 +75,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="12-2.cpp" />
+    <ClCompile Include="graph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="matrix.txt" />
     <None Include="test.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
